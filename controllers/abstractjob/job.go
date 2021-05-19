@@ -14,21 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package defaultplugin
+package abstractjob
 
 import (
-	"context"
-
-	corev1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// GetServicesForJob returns the services managed by the job. This can be achieved by selecting services using label key "job-name"
-// i.e. all services created by the job will come with label "job-name" = <this_job_name>
-func (r *JobReconciler) GetServicesForJob(obj interface{}) ([]*corev1.Service, error) {
-	return []*corev1.Service{}, nil
-}
-
-// CreateService creates the service
-func (r *JobReconciler) CreateService(job interface{}, service *corev1.Service) error {
-	return r.Create(context.Background(), service)
+// GetJobFromAPIClient returns the Job from API server
+func (r *JobReconciler) GetJobFromAPIClient(namespace, name string) (metav1.Object, error) {
+	panic("GetJobFromAPIClient method is not implemented!")
 }

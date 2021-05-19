@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package defaultplugin
+package abstractjob
 
 import (
 	"k8s.io/apimachinery/pkg/runtime"
@@ -42,4 +42,6 @@ type JobReconciler struct {
 	ctrl     job_controller.JobController
 }
 
-func (r *JobReconciler) GetAPIGroupVersionKind() schema.GroupVersionKind
+func (r *JobReconciler) GetAPIGroupVersionKind() schema.GroupVersionKind {
+	panic("GetAPIGroupVersionKind method is not implemented!")
+}

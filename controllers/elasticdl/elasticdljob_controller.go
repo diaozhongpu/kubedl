@@ -32,7 +32,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/source"
 
 	"github.com/alibaba/kubedl/cmd/options"
-	defaultplugin "github.com/alibaba/kubedl/controllers/defaultplugin"
+	abstractjob "github.com/alibaba/kubedl/controllers/abstractjob"
 	"github.com/alibaba/kubedl/pkg/job_controller"
 	v1 "github.com/alibaba/kubedl/pkg/job_controller/api/v1"
 	"github.com/alibaba/kubedl/pkg/metrics"
@@ -46,7 +46,7 @@ var log = logf.Log.WithName("elasticdl-controller")
 
 func NewReconciler(mgr ctrl.Manager, config job_controller.JobControllerConfiguration) *ElasticDLJobReconciler {
 	r := &ElasticDLJobReconciler{
-		defaultplugin.JobReconciler{
+		abstractjob.JobReconciler{
 			Client: mgr.GetClient(),
 			scheme: mgr.GetScheme(),
 		},
@@ -61,7 +61,7 @@ var _ v1.ControllerInterface = &ElasticDLJobReconciler{}
 
 // ElasticDLJobReconciler reconcile a ElastiDLJob object
 type ElasticDLJobReconciler struct {
-	defaultplugin.JobReconciler
+	abstractjob.JobReconciler
 }
 
 // +kubebuilder:rbac:groups="",resources=pods,verbs=get;list;watch;create;update;patch;delete
