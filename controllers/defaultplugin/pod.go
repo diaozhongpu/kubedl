@@ -14,20 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package default
+package defaultplugin
 
 import (
 	"context"
 	"fmt"
 
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/kubernetes/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	training "github.com/alibaba/kubedl/apis/training/v1alpha1"
 	"github.com/alibaba/kubedl/pkg/job_controller"
 	"github.com/alibaba/kubedl/pkg/util"
 )
@@ -70,4 +68,3 @@ func (r *JobReconciler) GetPodsForJob(obj interface{}) ([]*corev1.Pod, error) {
 func (r *JobReconciler) CreatePod(job interface{}, pod *corev1.Pod) error {
 	return r.Create(context.Background(), pod)
 }
-
